@@ -1,0 +1,15 @@
+{
+  "name": "ia-agents",
+  "private": true,
+  "version": "0.1.0",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev:web": "npm --workspace @ia-agents/web run dev",
+    "dev:api": "npm --workspace @ia-agents/api run dev",
+    "build": "npm --workspace @ia-agents/shared run build && npm --workspace @ia-agents/api run build && npm --workspace @ia-agents/web run build",
+    "typecheck": "npm --workspace @ia-agents/shared run typecheck && npm --workspace @ia-agents/api run typecheck && npm --workspace @ia-agents/web run typecheck"
+  }
+}

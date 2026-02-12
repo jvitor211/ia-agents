@@ -1,0 +1,22 @@
+version: '3.9'
+services:
+  api:
+    image: node:20
+    working_dir: /app
+    volumes:
+      - ./:/app
+    command: bash -lc "npm install && npm run dev:api"
+    ports:
+      - "4000:4000"
+  web:
+    image: node:20
+    working_dir: /app
+    volumes:
+      - ./:/app
+    command: bash -lc "npm install && npm run dev:web"
+    environment:
+      - NEXT_PUBLIC_API_BASE_URL=http://api:4000
+    ports:
+      - "3000:3000"
+    depends_on:
+      - api
